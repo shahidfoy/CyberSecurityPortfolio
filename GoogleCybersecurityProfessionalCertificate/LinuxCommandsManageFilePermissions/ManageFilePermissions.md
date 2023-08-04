@@ -8,10 +8,13 @@ File permissions can be checked by utilzing the -l and -la arguments when listin
 ```bash
 ls -l
 ```
+to list files and directories in a parent directory.
+
 or
 ```bash
 ls -la
 ```
+to list all files and directories in a parent directory including hidden files.
 
 This will provide out put similar to the following:
 
