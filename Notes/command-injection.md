@@ -55,3 +55,6 @@ Sometimes, applications will filter out certain characters or keywords. Here are
 *   **Using different commands:**
     *   If `cat` is blocked, try `more`, `less`, `head`, `tail`, `grep`, `sed`, `awk`.
     *   If `nc` is blocked, try `/dev/tcp`, `curl`, `wget`.
+
+## Cheatsheet
+https://hackersonlineclub.com/command-injection-cheatsheet/

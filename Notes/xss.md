@@ -60,3 +60,9 @@ To prevent XSS, applications sanitize user input. In a CTF context, it's importa
 *   **Attribute Filtering:** Attributes like `onerror` or `onload` may be stripped from HTML tags.
 
 Understanding how these sanitization methods work is key to learning about web security.
+
+## Cheatsheet
+https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
+
+- <script>alert('xss')</script>
+- <img src='x' onerror="alert('xss')">

@@ -79,3 +79,6 @@ In some cases, the application does not return the results of the XXE attack in 
 ## Preventing XXE
 
 The safest way to prevent XXE is to disable DTDs (Document Type Definitions) and external entities completely. This can usually be done in the configuration of the XML parser. If it is not possible to disable DTDs completely, then external entities and external DTDs should be disabled.
+
+## Cheatsheet
+https://cheatsheet.haax.fr/web-pentest/files-and-files-inclusions/xxe/

