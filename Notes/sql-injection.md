@@ -97,3 +97,7 @@ test' or 1=1--
 ```sql
 tester@localhost.com' --
 ```
+
+```sql
+admin' or 1=1 --
+```

