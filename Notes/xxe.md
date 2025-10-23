@@ -82,3 +82,11 @@ The safest way to prevent XXE is to disable DTDs (Document Type Definitions) and
 
 ## Cheatsheet
 https://cheatsheet.haax.fr/web-pentest/files-and-files-inclusions/xxe/
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<author>
+  <name>ven</name>
+  <origin>void</origin>
+</author>
+```
