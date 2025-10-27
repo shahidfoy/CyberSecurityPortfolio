@@ -85,6 +85,17 @@ feroxbuster -u https://target-url.com -w /path/to/wordlist.txt --depth 2 -t 50
 feroxbuster -u https://0a6a0014...web-security-academy.net/ -w ~/wordlists/SecLists/Discovery/Web-Content/common.txt
 ```
 
+## ffuf
+
+Fuzz Faster U Fool
+
+```bash
+ffuf -w /usr/share/wordlists/dirb/common.txt -u https://example.com/FUZZ
+
+# filter out file size
+ffuf -w /usr/share/wordlists/dirb/common.txt -u https://example.com/FUZZ -fs 75002
+```
+
 ### Common flags
 
 * `-u`, `--url` — target URL

@@ -9,3 +9,13 @@ https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credenti
 
 HaveIBeenPwned PwnedPasswordsDoanloader:
 https://github.com/HaveIBeenPwned/PwnedPasswordsDownloader
+
+## Null Byte
+
+```bash
+%00
+
+%25%30%30
+
+%2500
+```
